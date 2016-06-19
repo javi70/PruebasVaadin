@@ -1,0 +1,100 @@
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+//$v-font-size: 16px;
+//$v-font-weight: 300;
+//$v-font-family: "Open Sans", sans-serif;
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+//$v-background-color: hsl(210, 0%, 98%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+//$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+@import "../valo/valo.scss";
+
+@mixin pruebasvaadin {
+  @include valo;
+
+  // Insert your own theme rules here
+  
+  /* Estilos personalizados */
+  	.cab-supertabla{
+  		background-color: #BB800A;
+  		color: white;
+  		width:100%;
+  	}
+  	
+	.listaTablas1{
+		background-color: #FF800A;
+		color: #0080BB;
+	}
+	
+	.listaTablas2{
+		background-color: #FF801A;
+		color: #0080CB;
+	}
+	
+	.listaTablas3{
+		background-color: #FF802A;
+		color: #0080DB;
+	}
+
+	.menu-tabla-visible{
+		position: absolute;
+		//border: 1px solid black;
+		border-left: 1px solid black;
+		border-right:1px solid black;
+		border-bottom:1px solid black;
+		top: 35px;
+		left: 0px;
+		z-index:1000;
+		visibility:visible;
+	}
+
+	.menu-tabla-invisible{
+		position: absolute;
+		//border: 1px solid black;
+		border-left: 1px solid black;
+		border-right:1px solid black;
+		border-bottom:1px solid black;
+		top: 35px;
+		left: 0px;
+		z-index:0;
+		visibility:hidden;
+	}
+	
+/* ejemplo para modificar solo el borde superior
+	.menu-tabla:first-child{
+		border-top: 5px dotted red;
+	}
+*/	
+
+	.tabla-encima{
+		position: relative;
+		z-index:1000;
+	}
+	
+	.tabla-debajo{
+		position: relative;
+		z-index:0;	
+	}
+	
+}
+
