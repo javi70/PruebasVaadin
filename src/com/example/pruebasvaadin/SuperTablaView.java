@@ -84,7 +84,7 @@ public class SuperTablaView extends CssLayout implements View {
 					//mostrar/ocultar tablas
 					menu.setVisible(false);
 					menu.setStyleName("menu-tabla-invisible");
-					tabla.setStyleName("tabla-encima");					
+					tabla.setStyleName("tabla-encima");
 					Notification.show("Mostrar tablas");
 				}else{				
 					menu.setVisible(true);
@@ -96,7 +96,8 @@ public class SuperTablaView extends CssLayout implements View {
 				
 			}
 		});
-
+		
+		
 	}
 	
 	

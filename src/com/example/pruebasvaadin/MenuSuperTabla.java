@@ -1,10 +1,13 @@
 package com.example.pruebasvaadin;
 
+import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
@@ -31,6 +34,18 @@ public class MenuSuperTabla extends CustomComponent {
 		resul.addComponent(tabla3);
 		resul.addComponent(chk3);
 		resul.setComponentAlignment(chk3,Alignment.TOP_RIGHT);
+		
+		chk3.addValueChangeListener(new ValueChangeListener() {
+			
+			@Override
+			public void valueChange(ValueChangeEvent event) {
+				// TODO Auto-generated method stub
+				if(chk3.getValue())
+					Notification.show("Mostrar tabla "+texto);
+				else
+					Notification.show("Ocultar tabla "+texto);
+			}
+		});
 		return resul;
 	}
 
