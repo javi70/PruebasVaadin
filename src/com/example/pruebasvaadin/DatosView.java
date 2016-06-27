@@ -1,12 +1,18 @@
 package com.example.pruebasvaadin;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.data.util.ObjectProperty;
+import com.vaadin.data.util.converter.StringToDateConverter;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.shared.ui.ui.UIState.LocaleData;
 import com.vaadin.ui.AbstractSelect.ItemCaptionMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
@@ -17,6 +23,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.DateField;
 
 public class DatosView extends VerticalLayout implements View {
 
@@ -25,6 +32,7 @@ public class DatosView extends VerticalLayout implements View {
 		private TextField numero;
 		private ComboBox nombre;
 		private TextField telefono;
+		private DateField fecha;
 		private Label lbl;
 		private HorizontalLayout hlBotones; 
 	    	
@@ -37,6 +45,8 @@ public class DatosView extends VerticalLayout implements View {
 			formLayout.setMargin(true);
 			
 				numero = new TextField("Número","0");
+				
+				fecha = new DateField("Fecha");
 
 		        BeanItemContainer<BeanAgenda> container = new BeanItemContainer<BeanAgenda>(BeanAgenda.class);
 				nombre = new ComboBox("Nombre",container);
@@ -55,6 +65,7 @@ public class DatosView extends VerticalLayout implements View {
 			    hlBotones.addComponent(btnCancelar);
 			    
 		    formLayout.addComponent(numero);
+		    formLayout.addComponent(fecha);
 		    formLayout.addComponent(nombre);
 		    formLayout.addComponent(telefono);
 		    formLayout.addComponent(hlBotones);
@@ -70,7 +81,13 @@ public class DatosView extends VerticalLayout implements View {
 					for(int i=0;i<PruebasvaadinUI.agenda.size();i++){
 						System.out.println(PruebasvaadinUI.agenda.get(i).toString());
 					}
-					Notification.show("Registro añadido");
+					
+					Notification.show("Registro añadido. La fecha es "+new SimpleDateFormat("dd-MM-yyyy").format(fecha.getValue()));
+					StringToDateConverter conversor = new StringToDateConverter();
+					String strFecha="01/06/2016";
+					Class<? extends Date> dtFecha=null;
+					System.out.println(conversor.convertToModel(strFecha, dtFecha, Locale.getDefault()));
+					System.out.println(dtFecha);
 				}
 			});
 		    

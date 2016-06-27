@@ -45,7 +45,11 @@ public class MainView extends VerticalLayout implements View {
 		menuLayout.addComponent(btnDatos);
 		Button btnSuperTabla= new Button("SuperTabla");
 		btnSuperTabla.setWidth("150px");
-		menuLayout.addComponent(btnSuperTabla);					
+		menuLayout.addComponent(btnSuperTabla);
+		Button btnMisPruebas= new Button("Mis pruebas");
+		btnMisPruebas.setWidth("150px");
+		menuLayout.addComponent(btnMisPruebas);					
+
 		layout.addComponent(menuLayout);
 		
 		panel = new Panel("PANEL");
@@ -83,6 +87,11 @@ public class MainView extends VerticalLayout implements View {
 			}
 		});
 		
+		btnMisPruebas.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				cargarMisPruebas();
+			}
+		});
 		addComponent(layout);
 		
 		
@@ -149,6 +158,23 @@ public class MainView extends VerticalLayout implements View {
 		tabSheet.addTab(vlst,"SuperTabla");
 		
 		tabSheet.setSelectedTab(vlst);
+	
+	}
+	
+	private void cargarMisPruebas(){
+		tabSheet.removeAllComponents();
+		VerticalLayout vla = new AnalisisView();		
+		tabSheet.addTab(vla, "Análisis");
+		VerticalLayout vlm = new MantenimientoView(navigator);
+		tabSheet.addTab(vlm,"Mantenimiento");
+		VerticalLayout vld = new DatosView(navigator);
+		tabSheet.addTab(vld,"Datos");
+		Layout vlst = new SuperTablaView();
+		tabSheet.addTab(vlst,"SuperTabla");		
+		Layout vlmp = new MisPruebasView();
+		tabSheet.addTab(vlmp,"MisPruebas");
+		
+		tabSheet.setSelectedTab(vlmp);
 	
 	}
 	
