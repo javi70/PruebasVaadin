@@ -1,5 +1,6 @@
 package com.example.pruebasvaadin;
 
+import com.example.tree.TreeView;
 import com.vaadin.data.Item;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -49,6 +50,9 @@ public class MainView extends VerticalLayout implements View {
 		Button btnMisPruebas= new Button("Mis pruebas");
 		btnMisPruebas.setWidth("150px");
 		menuLayout.addComponent(btnMisPruebas);					
+		Button btnTree= new Button("Tree view");
+		btnTree.setWidth("150px");
+		menuLayout.addComponent(btnTree);					
 
 		layout.addComponent(menuLayout);
 		
@@ -92,6 +96,12 @@ public class MainView extends VerticalLayout implements View {
 				cargarMisPruebas();
 			}
 		});
+		
+		btnTree.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				cargarTree();
+			}
+		});
 		addComponent(layout);
 		
 		
@@ -113,6 +123,8 @@ public class MainView extends VerticalLayout implements View {
 		tabSheet.addTab(vld,"Datos");
 		Layout vlst = new SuperTablaView();
 		tabSheet.addTab(vlst,"SuperTabla");
+		Layout vltree = new TreeView();
+		tabSheet.addTab(vltree,"Tree");
 		
 		tabSheet.setSelectedTab(vla);
 	}
@@ -127,6 +139,8 @@ public class MainView extends VerticalLayout implements View {
 		tabSheet.addTab(vld,"Datos");
 		Layout vlst = new SuperTablaView();
 		tabSheet.addTab(vlst,"SuperTabla");
+		Layout vltree = new TreeView();
+		tabSheet.addTab(vltree,"Tree");
 		
 		tabSheet.setSelectedTab(vlm);
 	}
@@ -141,6 +155,8 @@ public class MainView extends VerticalLayout implements View {
 		tabSheet.addTab(vld,"Datos");
 		Layout vlst = new SuperTablaView();
 		tabSheet.addTab(vlst,"SuperTabla");
+		Layout vltree = new TreeView();
+		tabSheet.addTab(vltree,"Tree");
 		
 		tabSheet.setSelectedTab(vld);
 	
@@ -156,6 +172,8 @@ public class MainView extends VerticalLayout implements View {
 		tabSheet.addTab(vld,"Datos");
 		Layout vlst = new SuperTablaView();
 		tabSheet.addTab(vlst,"SuperTabla");
+		Layout vltree = new TreeView();
+		tabSheet.addTab(vltree,"Tree");
 		
 		tabSheet.setSelectedTab(vlst);
 	
@@ -173,8 +191,29 @@ public class MainView extends VerticalLayout implements View {
 		tabSheet.addTab(vlst,"SuperTabla");		
 		Layout vlmp = new MisPruebasView();
 		tabSheet.addTab(vlmp,"MisPruebas");
+		Layout vltree = new TreeView();
+		tabSheet.addTab(vltree,"Tree");
 		
 		tabSheet.setSelectedTab(vlmp);
+	
+	}
+	
+	private void cargarTree(){
+		tabSheet.removeAllComponents();
+		VerticalLayout vla = new AnalisisView();		
+		tabSheet.addTab(vla, "Análisis");
+		VerticalLayout vlm = new MantenimientoView(navigator);
+		tabSheet.addTab(vlm,"Mantenimiento");
+		VerticalLayout vld = new DatosView(navigator);
+		tabSheet.addTab(vld,"Datos");
+		Layout vlst = new SuperTablaView();
+		tabSheet.addTab(vlst,"SuperTabla");		
+		Layout vlmp = new MisPruebasView();
+		tabSheet.addTab(vlmp,"MisPruebas");
+		Layout vltree = new TreeView();
+		tabSheet.addTab(vltree,"Tree");
+		
+		tabSheet.setSelectedTab(vltree);
 	
 	}
 	

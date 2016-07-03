@@ -2,6 +2,7 @@ package com.example.pruebasvaadin;
 
 import java.util.ArrayList;
 
+import com.example.tree.TreeView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -33,6 +34,7 @@ public class PruebasvaadinUI extends UI {
 		navigator.addView("mantenimiento", new MantenimientoView(navigator));
 		navigator.addView("datos", new DatosView(navigator));
 		navigator.addView("supertabla", new SuperTablaView());
+		navigator.addView("tree", new TreeView());
 		navigator.navigateTo("");
 		
 
